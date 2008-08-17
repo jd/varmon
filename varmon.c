@@ -2660,7 +2660,7 @@ int build_UI(SWINDOWS *all_win, CARD *card_pool, TAB *tab_pool, int no_cards){
 
     all_win->root = initscr();
 	if(LINES < 25 || COLS < 80){
-		sprintf(err_msg, "Terminal size = %dx%d. Please resize your window to atleast 80x25.", COLS, LINES);
+		fprintf(stderr, "Terminal size = %dx%d. Please resize your window to atleast 80x25.", COLS, LINES);
 		trash_UI(all_win, BOTTOM_FAIL);
 		return 0;
 	}
@@ -3398,35 +3398,6 @@ void init_path(CARD * card_pool, int no_cards){
 	}
 }
 
-
-void clean_up(){
-	int count;
-	
-	printf("\n%s\n", err_msg);
-	
-	printf("\n-=<| VARMon ¡¿ |>=- Starting clean up procedure ... 8^0\n");
-
-	if(!snap_all)
-		printf("-=<| VARMon ¡¿ |>=- Nothing to clean. 8^\\\n");
-	else{
-	
-		/*Free the memory for Logical and Physical arrays per card*/
-		for(count = 0; count < no_pages; count++){
-
-			if(snap_all[count].ph_dev)
-				free(snap_all[count].ph_dev);
-			
-			if(snap_all[count].lg_drv)
-				free(snap_all[count].lg_drv);
-			
-		}
-		
-		free(snap_all);
-	}
-	
-	printf("\n-=<| VARMon ¡¿ |>=- Done. Clean exit reached 8^)\n\n");
-}
-
 /*
 --------------------------------------------------------------------------------
 	Let there be varmon*/
@@ -3455,8 +3426,6 @@ int main(int argc, char **argv){
 		printf("\nDAC driver not loaded. Exiting.\n\n");
 		exit(1);
 	}
-	
-	atexit(&clean_up);
 	
 	count_cards(meet_p);	/*Count the number of cards
 							 and fill in the SNAPSHOT paths*/
