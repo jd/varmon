@@ -424,7 +424,6 @@ int detect_backplane(){
 	DAC960_SCSI_Inquiry_T inq;
 	int num_controllers;
 	int controller_number;
-	char tmp[32];
 	struct utsname ut;
 
 	uname(&ut);
@@ -489,19 +488,8 @@ int detect_backplane(){
 #else
 				if (status == 0){
 #endif
-					int index;
-
 					fflush(stdout);
 					status = inquiry(fd, channel, target, &inq, controller_number);
-					strncpy(tmp, inq.VendorIdentification, 8);
-					tmp[8]=0;
-					memset(&tmp[0], 0, sizeof(tmp));
-					index =0;
-					while(isprint(inq.ProductIdentification[index])){
-						tmp[index] = inq.ProductIdentification[index];
-						index++;
-					}
-					tmp[index]=0;
 					if ((!strncmp(inq.VendorIdentification,"QLogic",6)) ||
 						(!strncmp(inq.VendorIdentification,"VA Linux",8))){
 						int k;
@@ -521,8 +509,6 @@ int detect_backplane(){
 
 					}
 				}
-				
-				memset(&tmp[0], 0, sizeof(tmp));
 				}
 	}
 	close(fd);
