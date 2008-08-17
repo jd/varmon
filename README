@@ -1,13 +1,13 @@
 READ_ME_FIRST
-VA VARMon (1.2.0)
+VA VARMon (1.2.1)
 Authors: Dragan Stancevic <visitor@valinux.com>
-        Julien Danjou <julien@danjou.info>
+         Julien Danjou <julien@danjou.info>
 
 FAQ:
 
  1. What does this version support?
 
-    This version of VARMon supports DAC drivers from 2.2.0 up to 2.5.47,
+    This version of VARMon supports DAC drivers from 2.2.0 up to 2.5.49,
     all the Mylex RAID cards from the 960 and 1100 series and adds support
     for new Mylex cards(eXtremeRAID 2000, eXtremeRAID 3000, AcceleRAID 352,
     and AcceleRAID 170), it also reads SAF-TE from VA and nexStore backplane.
