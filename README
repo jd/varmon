@@ -1,0 +1,72 @@
+READ_ME_FIRST
+VA VARMon (1.2.0)
+Authors: Dragan Stancevic <visitor@valinux.com>
+        Julien Danjou <julien@danjou.info>
+
+FAQ:
+
+ 1. What does this version support?
+
+    This version of VARMon supports DAC drivers from 2.2.0 up to 2.5.47,
+    all the Mylex RAID cards from the 960 and 1100 series and adds support
+    for new Mylex cards(eXtremeRAID 2000, eXtremeRAID 3000, AcceleRAID 352,
+    and AcceleRAID 170), it also reads SAF-TE from VA and nexStore backplane.
+
+
+ 2. I start it under xterm and it doesn't appear to run properly, what is wrong?
+
+    This program was designed for terminal usage so if you experience weird
+    behavior under X terminals play with your "export TERM=" option.
+    This is not a bug it's feature of xterminals, since each one has it's own
+    way of displaying special characters.
+
+
+ 3. Why is VARMon lagging if I press ESC key?
+
+    That's an ncurses timeout which is used to check if there is an ESC
+    sequence about to happen.
+
+
+ 4. There are kernel messages displaying over my terminal when I use VARMon.
+
+    Although the refresh happens every 1.5 seconds it doesn't deal with the
+    stealth characters sent by the kernel. At this point you can do two things
+    about that, one of them is press the key "r" which will tell VARMon to do a
+    hardware refresh off your terminal, the second thing that you can do is
+    change your settings for the syslog. You can do so by changing the line:
+
+    kern.*					/dev/console
+
+    to something like 
+
+    kern.*                                      /dev/tty12
+
+    or
+
+    #kern.*                                      /dev/console
+    
+    in your syslogd configuration file called "/etc/syslog.conf"
+
+
+
+ 5. I found a bug, what do I do now?
+
+    Let me know about it, I'll fix everything you find.
+    
+	
+ 6. I have a suggestion for your program/I want to contribute, what now?
+
+    Drop me a mail at julien@danjou.info
+    
+
+ 7. DAC driver is posting to run "varmon -b" what is that all about?
+
+   Varmon sends an invalid command to the DAC driver, causing the driver
+   to reset its command buffer. This is nothing to worry about.
+				   
+
+ 8. Why is there a file DAC960.h distributed with VARMon?
+
+   This file was taken from the original DAC driver and modified to fit VARMon
+   needs. It should not be used to compile the DAC driver.
+   

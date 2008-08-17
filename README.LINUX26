@@ -1,0 +1,7 @@
+If you are running Linux version 2.5/2.6, the new DAC driver will require
+you have a special /dev/ entry to run.
+
+You simply create it this way:
+
+mknod --mode=660 /dev/dac960_gam c 10 252
+
