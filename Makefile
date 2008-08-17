@@ -3,14 +3,8 @@
 # Author Dragan Stancevic <visitor@valinux.com>
 #        Julien Danjou <julien@danjou.info>
 
-varmon:
-	gcc $(CFLAGS) -o varmon varmon.c -Wall -lncurses $(LDFLAGS)
-
-static: varmon_st
-	strip varmon
-
-varmon_st:
-	gcc -static -o varmon varmon.c -Wall -lncurses
+varmon: varmon.c
+	gcc $(CFLAGS) -o varmon varmon.c -W -Wall -lncurses $(LDFLAGS)
 
 clean:
 	rm -f *.o core varmon
