@@ -2741,7 +2741,7 @@ int build_UI(SWINDOWS *all_win, CARD *card_pool, TAB *tab_pool, int no_cards){
 			box(all_win->status_win,0,0);
 
 		        mvwaddstr(all_win->title, 0, ((COLS/2)-16), "=<| VA RAID Monitor (VARMon) |>="); 
-		        mvwaddstr(all_win->title, 1, ((COLS/2)-25), "Ver. 1.2.0 by Julien Danjou <julien@danjou.info>"); 
+		        mvwaddstr(all_win->title, 1, ((COLS/2)-25), "Ver. 1.2.1 by Julien Danjou <julien@danjou.info>"); 
 
 		        mvwaddstr(all_win->bottom, 0, 1, "<ESC> - Exit | <R> - Refresh | <RETURN> - Lock");
 		        mvwaddstr(all_win->cardlist, 0,1, "Detected cards");
